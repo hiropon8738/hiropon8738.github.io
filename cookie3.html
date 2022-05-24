@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <style media="screen">
+      img{width:300px;}
+    </style>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      count = 2000;
+      document.cookie = "cookie_count=100; "
+      a=GetCookie('coockie_count');
+      alert(a);
+      function cookie_click() {
+        span = document.getElementById('cookie_count');
+        count++;
+        span.textContent = count;
+      }
+      function grandma() {
+        if (count >= 100){
+          count -= 100;
+          setInterval(autoCountUp,1000,1);
+        }
+      }
+      function farm() {
+        if (count >= 1000){
+          count -= 1000;
+          setInterval(autoCountUp,1000,8);
+        }
+      }
+      function autoCountUp(num) {
+        count = count + num;
+        span = document.getElementById('cookie_count');
+        span.textContent = count;
+      }
+      function GetCookie( name )
+{
+    var result = null;
+
+    var cookieName = name + '=';
+    var allcookies = document.cookie;
+
+    var position = allcookies.indexOf( cookieName );
+    if( position != -1 )
+    {
+        var startIndex = position + cookieName.length;
+
+        var endIndex = allcookies.indexOf( ';', startIndex );
+        if( endIndex == -1 )
+        {
+            endIndex = allcookies.length;
+        }
+
+        result = decodeURIComponent(
+            allcookies.substring( startIndex, endIndex ) );
+    }
+
+    return result;
+}
+    </script>
+    <p><span id="cookie_count"></span>枚</p>
+    <img onclick="cookie_click()" src="cookie.png" alt="">
+    <ul>
+      <li onclick="grandma()">グランマ</li>
+      <li onclick="farm()">ファーム</li>
+      <li></li>
+    </ul>
+  </body>
+</html>
